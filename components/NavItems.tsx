@@ -1,14 +1,8 @@
-import React from "react";
 import { Link, NavLink } from "react-router";
-import { sidebarItems } from "~/constants";
+import { sidebarItems, user } from "~/constants";
 import { cn } from "~/lib/utils";
 
 const NavItems = ({ handleClick } : {handleClick?: () => void}) => {
-  const user = {
-    name: "Seraphina",
-    email: "sera@gmail.com",
-    imageUrl: "/assets/images/david.webp",
-  };
 
   return (
     <>
