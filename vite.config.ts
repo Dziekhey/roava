@@ -8,12 +8,5 @@ export default defineConfig({
   ssr: {
     // Force bundling Syncfusion for SSR
     noExternal: ["@syncfusion/**"],
-  },
-  // optimizeDeps: {
-  //   include: [
-  //     "@syncfusion/ej2-base",
-  //     "@syncfusion/ej2-react-grids",
-  //     // Add other Syncfusion packages if needed
-  //   ],
-  // },
+  }
 });
