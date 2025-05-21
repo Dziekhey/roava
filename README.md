@@ -1,18 +1,45 @@
-# Welcome to React Router!
+# 🌍 TourVisto – Your AI-Powered Travel Dashboard
 
-A modern, production-ready template for building full-stack React applications using React Router.
+TourVisto is a powerful, AI-enhanced travel planning dashboard built with the **React Router** framework. It offers a seamless experience for travelers and admins to create, manage, and explore trips with intelligent itinerary generation, insightful analytics, and a modern UI.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## ✨ Features
 
-## Features
+- 🧠 **AI-Powered Itinerary Generator**  
+  Instantly generate customized trip plans tailored to users’ preferences.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 🛠 **Admin Dashboard**  
+  Manage users, trips, and platform activities with ease.
+
+- 📈 **User Growth & Trip Analytics**  
+  Track key metrics with beautiful, interactive charts and tables.
+
+- 📊 **Data Visualizations**  
+  Syncfusion-powered charts and data grids for actionable insights.
+
+- 📅 **Detailed Trip Overview**  
+  View comprehensive trip information with rich UX components.
+
+- 🔐 **Secure Authentication & Data Management**  
+  Using Appwrite for secure user handling and backend support.
+
+- 🧱 **Modular Code Architecture**  
+  Scalable, reusable components for clean and maintainable code.
+
+- ⚡ **Blazing Fast Performance**  
+  Powered by Vite, TailwindCSS, and optimized routing.
+
+---
+
+## 🔧 Tech Stack
+
+- **React** + **React Router**
+- **TypeScript**
+- **TailwindCSS**
+- **Appwrite** (Backend & Auth)
+- **Syncfusion** (Charts & Tables)
+- **Vite** (Bundler)
+
+---
 
 ## Getting Started
 
@@ -41,6 +68,10 @@ Create a production build:
 ```bash
 npm run build
 ```
+
+## 📺 Tutorial Credit
+
+This project was built by following the [YouTube tutorial by Adrian Hajdin - JS Mastery](https://www.youtube.com/watch?v=xZ1ba-RLrjo).
 
 ## Deployment
 
