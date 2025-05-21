@@ -50,11 +50,16 @@ app/
 ├── lib/                 # Utility functions (e.g. parseTripData)
 ├── appwrite/            # Appwrite service functions
 └── main.tsx             # App entry with React Router setup
+```
 
 ## Getting Started
+Clone the Repository
+
+```bash
+git clone https://github.com/Dziekhey/tourvisto.git
+```
 
 ### Installation
-
 Install the dependencies:
 
 ```bash
