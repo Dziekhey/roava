@@ -7,22 +7,35 @@ import {
 import { cn, formatDate } from "~/lib/utils";
 import { getAllUsers } from "~/appwrite/auth";
 import type { Route } from "./+types/AllUsers";
+import { getTripByUserId } from "~/appwrite/trips";
 
-export const loader = async ()=> {
+export const loader = async () => {
   const { users, total } = await getAllUsers(10, 0);
 
-  return {users, total}
-}
+  const allUsers: UserData[] = await Promise.all(
+    users.map(async (user) => ({
+      id: user.$id,
+      name: user.name,
+      email: user.email,
+      dateJoined: user.joinedAt,
+      imageUrl: user.imageUrl,
+      status: user.status,
+      itineraryCreated: await getTripByUserId(user.accountId), // user.itineraryCount ?? Math.floor(Math.random() * 10)
+    }))
+  );
 
-const AllUsers = ({loaderData} : Route.ComponentProps) => {
-  const { users } = loaderData
+  return { allUsers, total };
+};
+
+const AllUsers = ({ loaderData }: Route.ComponentProps) => {
+  const { allUsers } = loaderData;
   return (
     <main className="all-users wrapper">
       <Header
         title="Manage Users"
         description="Filter, sort, and access detailed user profiles"
       />
-      <GridComponent dataSource={users} gridLines="None">
+      <GridComponent dataSource={allUsers} gridLines="None">
         <ColumnsDirective>
           <ColumnDirective
             field="name"
@@ -52,7 +65,9 @@ const AllUsers = ({loaderData} : Route.ComponentProps) => {
             headerText="Date Joined"
             width="120"
             textAlign="Left"
-            template={({joinedAt} : {joinedAt: string}) => formatDate(joinedAt)}
+            template={({ joinedAt }: { joinedAt: string }) =>
+              formatDate(joinedAt)
+            }
           />
           <ColumnDirective
             field="itineraryCreated"
@@ -78,8 +93,14 @@ const AllUsers = ({loaderData} : Route.ComponentProps) => {
                     status === "user" ? "bg-success-500" : "bg-gray-500"
                   )}
                 />
-                  <h3 className={cn('font-inter text-xs font-medium', status === 'user' ? 'text-success-700' : 'text-gray-500')}>{status}</h3>
-               
+                <h3
+                  className={cn(
+                    "font-inter text-xs font-medium",
+                    status === "user" ? "text-success-700" : "text-gray-500"
+                  )}
+                >
+                  {status}
+                </h3>
               </article>
             )}
           />

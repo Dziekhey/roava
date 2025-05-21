@@ -1,5 +1,5 @@
 import { Query } from "appwrite";
-import { appwriteConfig, database } from "./client";
+import { account, appwriteConfig, database } from "./client";
 
 export const getAllTrips = async (limit: number, offset: number) => {
   const allTrips = await database.listDocuments(
@@ -31,4 +31,14 @@ export const getTripById = async (tripId: string) => {
   }
 
   return trip;
+};
+
+export const getTripByUserId = async (userId: string): Promise<number> => {
+  const response = await database.listDocuments(
+    appwriteConfig.databaseId,
+    appwriteConfig.tripCollectionId,
+    [Query.equal("userId", userId)]
+  );
+
+  return response.total || 0;
 };

@@ -1,5 +1,4 @@
 import { ID, OAuthProvider, Query } from "appwrite";
-// import { account, database, appwriteConfig } from "~/appwrite/client";
 import { redirect } from "react-router";
 import { account, appwriteConfig, database } from "./client";
 
@@ -21,6 +20,14 @@ export const storeUserData = async () => {
   try {
     const user = await account.get();
     if (!user) throw new Error("User not found");
+
+    const existingUsers = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", user.$id)]
+    );
+
+    if (existingUsers.total > 0) return;
 
     const { providerAccessToken } = (await account.getSession("current")) || {};
     const profilePicture = providerAccessToken
@@ -103,19 +110,19 @@ export const getUser = async () => {
   }
 };
 
-export const getAllUsers = async (limit: number, offset:  number) => {
+export const getAllUsers = async (limit: number, offset: number) => {
   try {
-    const {documents: users, total} = await database.listDocuments(
+    const { documents: users, total } = await database.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.userCollectionId,
       [Query.limit(limit), Query.offset(offset)]
-    )
+    );
 
-    if(total === 0) return {users: [], total};
+    if (total === 0) return { users: [], total };
 
-    return{users, total};
+    return { users, total };
   } catch (error) {
-    console.log('Error fetching users');
-    return {users: [], total: 0}
+    console.log("Error fetching users");
+    return { users: [], total: 0 };
   }
-}
+};
