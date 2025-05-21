@@ -28,8 +28,6 @@ TourVisto is a powerful, AI-enhanced travel planning dashboard built with the **
 - ⚡ **Blazing Fast Performance**  
   Powered by Vite, TailwindCSS, and optimized routing.
 
----
-
 ## 🔧 Tech Stack
 
 - **React** + **React Router**
@@ -39,7 +37,19 @@ TourVisto is a powerful, AI-enhanced travel planning dashboard built with the **
 - **Syncfusion** (Charts & Tables)
 - **Vite** (Bundler)
 
----
+## 🗂️ Project Structure (Highlights)
+
+```bash
+app/
+├── components/           # Shared UI components
+├── routes/
+│   └── admin/
+│       ├── AdminLayout.tsx  # Admin layout shell
+│       ├── AllUsers.tsx     # DataGrid for all users
+│       └── CreateTrip.tsx   # Country dropdown and trip form
+├── lib/                 # Utility functions (e.g. parseTripData)
+├── appwrite/            # Appwrite service functions
+└── main.tsx             # App entry with React Router setup
 
 ## Getting Started
 
@@ -49,6 +59,20 @@ Install the dependencies:
 
 ```bash
 npm install
+```
+
+### Set Up Environment Variables
+Create a .env file in the root:
+
+```bash
+VITE_SYNCFUSION_LICENSE_KEY=
+VITE_APPWRITE_PROJECT_ID=
+VITE_APPWRITE_API_ENDPOINT=
+VITE_APPWRITE_API_KEY=
+VITE_APPWRITE_DATABASE_ID=
+VITE_APPWRITE_USERS_COLLECTION_ID=
+GEMINI_API_KEY=
+UNSPLASH_ACCESS_KEY=
 ```
 
 ### Development
